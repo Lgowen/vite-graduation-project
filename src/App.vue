@@ -1,29 +1,47 @@
-<!-- 1.标记为jsx -->
-<script setup lang="jsx">
+<template>
+    <Nav v-if="isHomePage"></Nav>
+    <router-view></router-view>
+</template>
 
-import { defineComponent } from 'vue'
-import HelloWorld from 'comps/HelloWorld.vue'
-import logo from './assets/logo.png'
+<script>
+import Nav from "./components/nav-component/nav.vue";
+import Index from "./views/index.vue"
+import { ref, reactive, computed, watch } from "vue"
+import { useRoute, useRouter } from 'vue-router'
+import { useStore, mapState } from "vuex"
+// import removeStudent from '../src/student/removeStu'
+// import addStudent from '../src/student/addStu'
 
-// 2.用defineComponent定义组件且要导出
-export default defineComponent({
-  render: () => (
-    <>
-      <img alt="Vue logo" src={logo} />
-      <HelloWorld msg="Hello Vue 3 + Vite" />
-    </>
-  ),
-})
+export default {
+  name: "App",
+  // // 组合API的入口函数
+  setup() {
+    // ref函数只适用于简单数据类型
+    // reactive适用于复杂数据类型
+    // let {state, deleteStu} = removeStudent()
+    // let {state2, addStu} = addStudent(state)
+    const store = useStore()
+    const ruote = useRoute()
+    const isHomePage = computed( () => store.state.isHomePage )
+    // console.log(store.state.isHomePage)
+    // isHomePage = computed( () => store.state.isHomePage )
 
+    const changeHomePage = isHomePage => store.commit('changeHomePage', isHomePage)
+    watch(ruote, ( { path } ) => {
+        path === '/' ? changeHomePage(false) : changeHomePage(true)
+    })
+    // console.log(isHomePage)
+    return { isHomePage }
+  },
+  components: {
+    Index,
+    Nav,
+  },
+};
+
+// 抽取学生数据和相关业务逻辑
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style lang="scss">
+
 </style>
