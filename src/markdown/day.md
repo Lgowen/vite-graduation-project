@@ -1,8 +1,8 @@
 ﻿---
-wrapperClass: 'day' // wrapperClass will wrapped current md file
-title: 'title'
-desc: 'desc'
+title: 【前端小白的每日一点】
 ---
+
+This is a student from the beginning of this year to learn front end, was beaten by society and then recorded every day of learning. Have you come to see yourself studying today? If my article is lucky enough to be seen by you, I hope you can keep studying with me.
 
 # 2020-08-04
 

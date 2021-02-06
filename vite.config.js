@@ -1,7 +1,8 @@
-// import vitePluginVuedoc, { vueDocFiles } from 'vite-plugin-vuedoc'
+import vitePluginVuedoc, { vueDocFiles } from 'vite-plugin-vuedoc'
 import vue from '@vitejs/plugin-vue'
 import vueJsx from "@vitejs/plugin-vue-jsx"
 import path from 'path'
+// import  md  from "./src/plugins/md"
 import { viteMockServe } from 'vite-plugin-mock'
 
 /**
@@ -11,9 +12,12 @@ import { viteMockServe } from 'vite-plugin-mock'
 
 const config = {
   plugins: [
-    vue(),
+    vitePluginVuedoc({}),
+    vue({
+      include: [...vueDocFiles]
+    }),
     vueJsx(),
-    viteMockServe({ supportTs: false })
+    viteMockServe({ supportTs: false }),
   ],
   alias: {
     "@": path.resolve(__dirname, "src"),
@@ -23,10 +27,9 @@ const config = {
     "utils": path.resolve(__dirname, "src/utils"),
     "router": path.resolve(__dirname, "src/router"),
     "styles": path.resolve(__dirname, "src/styles"),
-    "markdown": path.resolve(__dirname, "src/markdown")
-  },
-
-  open: true
+    "markdown": path.resolve(__dirname, "src/markdown"),
+    "plugins": path.resolve(__dirname, "src/plugins")
+  }
 }
 
 export default config

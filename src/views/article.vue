@@ -1,5 +1,5 @@
 <template>
-    <div class="article">
+    <!-- <div class="article">
        <el-col :span="4">
           <div class="nav-right">
             <el-button size="small" type="primary" @click="handleClick('login')"
@@ -10,10 +10,12 @@
             >
           </div>
         </el-col>
-    </div>
+    </div> -->
+    <router-view></router-view>
 </template>
 
 <script>
+import '../assets/css/vue.css'
 import { ref, reactive } from "vue"
 export default {
   name: "about",

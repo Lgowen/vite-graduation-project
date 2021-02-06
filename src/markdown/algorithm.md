@@ -1,12 +1,9 @@
----
-wrapperClass: 'algorithm' // wrapperClass will wrapped current md file
-title: 'title'
-desc: 'desc'
----
+# 算法
 
-# 排序算法
+## 排序算法
 
-## 冒泡排序
+### 冒泡排序
+
 ```javascript
 function bubbleSort(arr){
    for(let i = 0; i < arr.length; i++){
@@ -22,7 +19,9 @@ function bubbleSort(arr){
    return arr
 }
 ```
-## 快速排序
+
+### 快速排序
+
 ```javascript
 function quickSort(arr, start, end){
     if(end - start < 1) return 
@@ -47,7 +46,8 @@ function quickSort(arr, start, end){
 }
 ```
 
-## 归并排序
+### 归并排序
+
 ```javascript
 function mergeSort(arr, left, right, temp){
     if(left < right){
@@ -82,7 +82,8 @@ function merge(arr, left, right, temp){
 }
 ```
 
-## 插入排序
+### 插入排序
+
 ```javascript
 function insertSort(arr){
     for(let i = 1; i < arr.length; i++){
@@ -99,7 +100,9 @@ function insertSort(arr){
     return arr
 }
 ```
-## 选择排序
+
+### 选择排序
+
 ```javascript
 function selectionSort(arr){
    for(let i = 0; i < arr.length - 1; i++){
@@ -113,9 +116,11 @@ function selectionSort(arr){
    }
 }
 ```
-# 查找算法
 
-## 二分查找
+## 查找算法
+
+### 二分查找
+
 ```javascript
 function binarySearch(arr, target, left, right){
     if(left > right) return -1
@@ -127,7 +132,8 @@ function binarySearch(arr, target, left, right){
 }
 ```
 
-## 统计一个数字在排序数组中出现的次数。
+### 统计一个数字在排序数组中出现的次数
+
 ```javascript
 function findNumCount(arr, target){
     if(arr && arr.length > 0 && target != null){
@@ -161,10 +167,10 @@ function getLastIndex(arr, target, first, last){
 }
 ```
 
+## 分治法
 
-# 分治法
+### 求逆序对:在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P
 
-## 求逆序对:在数组中的两个数字，如果前面一个数字大于后面的数字，则这两个数字组成一个逆序对。输入一个数组,求出这个数组中的逆序对的总数P。
 ```javascript
 function InversePairs(arr){
    return mergeSort(arr, 0, arr.length - 1, [])
@@ -211,11 +217,9 @@ function merge(arr, left, right, temp){
 }
 ```
 
+## 简单
 
-
-# 简单
-
-## 1.两数之和
+### 1.两数之和
 
 给定一个整数数组 nums 和一个整数目标值 target，请你在该数组中找出 和为目标值 的那 两个 整数，并返回它们的数组下标。
 
@@ -223,7 +227,6 @@ function merge(arr, left, right, temp){
 > 输入：nums = [2,7,11,15], target = 9
 > 输出：[0,1]
 > 解释：因为 nums[0] + nums[1] == 9 ，返回 [0, 1] 。
-
 
 ```javascript
 /**
@@ -247,13 +250,11 @@ const twoSum = function(nums, target) {
 };
 ```
 
-
-## 7.整数反转
+### 7.整数反转
 
 给你一个 32 位的有符号整数 x ，返回 x 中每位上的数字反转后的结果。
 
 如果反转后整数超过 32 位的有符号整数的范围 ，就返回 0。
-
 
 ```javascript
 /**
@@ -268,11 +269,9 @@ const reverse = function(x) {
 };
 ```
 
-
-## 9.回文数
+### 9.回文数
 
 判断一个整数是否是回文数。回文数是指正序（从左向右）和倒序（从右向左）读都是一样的整数。
-
 
 ```javascript
 /**
@@ -284,7 +283,7 @@ const isPalindrome = function(x) {
 };
 ```
 
-## 13.罗马数字转整数
+### 13.罗马数字转整数
 
 ```javascript
 /**
@@ -322,8 +321,7 @@ const romanToInt = function(s) {
 };
 ```
 
-
-## 14.最长公共前缀
+### 14.最长公共前缀
 
 编写一个函数来查找字符串数组中的最长公共前缀。
 
@@ -351,30 +349,7 @@ var longestCommonPrefix = function(strs) {
 };
 ```
 
-## 14.最长公共前缀
-
-
-```javascript
-/**
- * @param {string[]} strs
- * @return {string}
- */
-var longestCommonPrefix = function(strs) {
-    const str = strs[0]
-    if(!str) return ''
-    let res = ''
-    for(let i = 0; i < str.length; i++) {
-        let sign = strs.every(item => item[i] == str[i])
-        if(sign) {
-            res += str[i]
-        }else{
-            return res
-        }
-    }
-    return res
-};
-```
-## 20.有效的括号
+### 20.有效的括号
 
 ```javascript
 /**
@@ -403,7 +378,7 @@ const isValid = (s) => {
 };
 ```
 
-## 21.合并两个有序链表
+### 21.合并两个有序链表
 
 ```javascript
    /**
@@ -431,8 +406,7 @@ var mergeTwoLists = function(l1, l2) {
 }
 ```
 
-
-## 26. 删除排序数组中的重复项
+### 26. 删除排序数组中的重复项
 
 给定一个排序数组，你需要在 原地 删除重复出现的元素，使得每个元素只出现一次，返回移除后数组的新长度。
 
@@ -457,7 +431,7 @@ var removeDuplicates = function(nums) {
 };
 ```
 
-## 27. 移除元素
+### 27. 移除元素
 
 给你一个数组 nums 和一个值 val，你需要 原地 移除所有数值等于 val 的元素，并返回移除后数组的新长度。
 
@@ -483,9 +457,10 @@ var removeElement = function(nums, val) {
 };
 ```
 
-# 剑指offer
+## 剑指offer
 
-## 二维数组的查找
+### 二维数组的查找
+
 ```javascript
 /**
  * @param {number[]} nums
@@ -510,7 +485,7 @@ var findNumberIn2DArray = function(matrix, target) {
 };
 ```
 
-## 数组中重复的数字
+### 数组中重复的数字
 
 ```javascript
    /**
@@ -529,7 +504,7 @@ var findRepeatNumber = function(nums) {
 };
 ```
 
-## 替换空格
+### 替换空格
 
 ```javascript
 /**
@@ -541,8 +516,8 @@ var replaceSpace = function(s) {
 };
 ```
 
+### 旋转链表
 
-## 旋转链表
 ```javascript
 /**
  * Definition for singly-linked list.
@@ -566,7 +541,8 @@ var reversePrint = function(head) {
 };
 ```
 
-## 前序、中序重建二叉树
+### 前序、中序重建二叉树
+
 ```JavaScript
 /**
  * Definition for a binary tree node.

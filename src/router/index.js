@@ -1,18 +1,15 @@
-import { createRouter, createWebHashHistory } from 'vue-router'
+import { createRouter, createWebHistory } from 'vue-router'
 import algorithm from 'markdown/algorithm.md'
+// import array from 'markdown/array.md'
+// import day from 'markdown/day.md'
 
 
 
 // 1. 定义路由组件， 注意，这里一定要使用 文件的全名（包含文件后缀名）
-import { h } from 'vue'
-import Markdown from 'comps/MarkDown.vue'
-const md = (string) => h(Markdown, { content: string, key: string })
-// const md = path => h(
-//   Markdown,
-//   {
-//     path, key: path
-//   }
-// )
+// import { h } from 'vue'
+// import Markdown from 'comps/MarkDown.vue'
+// const md = (string) => h(Markdown, { content: string, key: string })
+
 
 const routes = [
   {
@@ -43,15 +40,15 @@ const routes = [
     path: "/article",
     component: () => import('../views/article.vue'),
     children: [
-      { path: "algorithm", component: () => import('../markdown/algorithm.md') },
-      { path: "array", component: () => import('../markdown/array.md') },
-      { path: "day", component: () => import('../markdown/day.md') }
-    ],
+      { path: "algorithm", component: () => import('markdown/algorithm.md') }
+      // { path: "array", component: () => import('markdown/array.md') },
+      // { path: "day", component: () => import('markdown/day.md') }
+    ]
   }
 ]
 
 const router = createRouter({
-  history: createWebHashHistory(),
+  history: createWebHistory(),
   routes
 })
 

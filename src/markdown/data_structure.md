@@ -1,8 +1,9 @@
 ---
-wrapperClass: 'data_structure' // wrapperClass will wrapped current md file
-title: 'title'
-desc: 'desc'
+title: 数据结构
 ---
+
+This is a student from the beginning of this year to learn front end, was beaten by society and then recorded every day of learning. Have you come to see yourself studying today? If my article is lucky enough to be seen by you, I hope you can keep studying with me.
+
 
 # 数据结构
 

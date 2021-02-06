@@ -119,13 +119,16 @@
 import { ref, reactive, onMounted, watch } from "vue";
 import { useRoute } from 'vue-router'
 import { controlRoute } from './controlRoute'
+
 export default {
-  name: "nav",
+  name: "Nav",
   setup() {
     const ruote = useRoute()
     const { activeId, navListItem, routeChange } = controlRoute() // 抽离Nav组件业务逻辑
-   
-    onMounted( () => routeChange(ruote))  // 保证从首页进来时展示的是当前的激活项
+    onMounted( () => {
+      
+      routeChange(ruote)
+    })  // 保证从首页进来时展示的是当前的激活项
     
     watch(ruote, nowPath => routeChange(nowPath)) // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
     
