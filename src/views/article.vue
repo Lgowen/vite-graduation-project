@@ -11,11 +11,12 @@
           </div>
         </el-col>
     </div> -->
-    <router-view></router-view>
+    <div class="content">
+      <router-view></router-view>
+    </div>
 </template>
 
 <script>
-import '../assets/css/vue.css'
 import { ref, reactive } from "vue"
 export default {
   name: "about",
@@ -28,9 +29,8 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-    .article {
-      margin-top: 61px;
+    .content {
+      margin: 61px 100px 0px; 
       width: 100%;
-      height: 100%;
     }
 </style>

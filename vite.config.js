@@ -21,14 +21,16 @@ const config = {
   ],
   alias: {
     "@": path.resolve(__dirname, "src"),
+    "assets": path.resolve(__dirname, "src/assets"),
     "comps": path.resolve(__dirname, "src/components"),
-    "apis": path.resolve(__dirname, "src/apis"),
-    "views": path.resolve(__dirname, "src/views"),
-    "utils": path.resolve(__dirname, "src/utils"),
-    "router": path.resolve(__dirname, "src/router"),
-    "styles": path.resolve(__dirname, "src/styles"),
     "markdown": path.resolve(__dirname, "src/markdown"),
-    "plugins": path.resolve(__dirname, "src/plugins")
+    "plugins": path.resolve(__dirname, "src/plugins"),
+    "router": path.resolve(__dirname, "src/router"),
+    "store": path.resolve(__dirname, "src/store"),
+    "styles": path.resolve(__dirname, "src/styles"),
+    "utils": path.resolve(__dirname, "src/utils"),
+    "apis": path.resolve(__dirname, "src/apis"),
+    "views": path.resolve(__dirname, "src/views")
   }
 }
 

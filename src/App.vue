@@ -1,6 +1,8 @@
 <template>
-    <Nav v-if="isHomePage"></Nav>
-    <router-view></router-view>
+   <div class="container">
+      <Nav v-if="isHomePage"></Nav>
+      <router-view></router-view>
+   </div>
 </template>
 
 <script>
@@ -43,5 +45,9 @@ export default {
 </script>
 
 <style lang="scss">
-
+    .container{
+      min-width: 1200px;
+      height: 100%;
+      margin: 0 auto
+    }
 </style>

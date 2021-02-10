@@ -1,15 +1,16 @@
 import { createApp } from 'vue'
 import App from '@/App.vue'
-import router from "@/router"
-import store from "@/store"
-import './assets/css/reset.css'
+import router from "router"
+import store from "store"
+// import './assets/css/reset.css'
+import 'assets/css/vue.scss'
 // 图标文件
 import 'element-plus/lib/theme-chalk/index.css'
-import './assets/iconfont/iconfont.css'
-import './assets/iconfont2/iconfont.css'
-import './assets/iconfont3/iconfont.css'
-import './assets/iconfont4/iconfont.css'
-import './assets/iconfont5/iconfont.css'
+import 'assets/iconfont/iconfont.css'
+import 'assets/iconfont2/iconfont.css'
+import 'assets/iconfont3/iconfont.css'
+import 'assets/iconfont4/iconfont.css'
+import 'assets/iconfont5/iconfont.css'
 // import 'github-markdown-css'
 // import './assets/css/vue.css'
 // import 'vite-plugin-vuedoc/style.css'
