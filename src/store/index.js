@@ -28,5 +28,8 @@ export default createStore({
         changeHomePage(state, isHomePage){ // 判断是否主页
             state.isHomePage = isHomePage
         }
+    },
+    actions: {
+        
     }
 })

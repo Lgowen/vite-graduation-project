@@ -17,6 +17,10 @@ const routes = [
     component: () => import('../views/index.vue'), // 路由懒加载
   },
   {
+    path: '/login',
+    component: () => import('comps/login/login.vue'), // 路由懒加载
+  },
+  {
     path: "/archive",
     component: () => import('../views/archive.vue')
   },

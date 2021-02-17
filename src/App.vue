@@ -1,12 +1,14 @@
 <template>
    <div class="container">
       <Nav v-if="isHomePage"></Nav>
+      <!-- <Login></Login> -->
       <router-view></router-view>
    </div>
 </template>
 
 <script>
 import Nav from "./components/nav-component/nav.vue";
+import Login from "./components/login/login.vue"
 import Index from "./views/index.vue"
 import { ref, reactive, computed, watch } from "vue"
 import { useRoute, useRouter } from 'vue-router'
@@ -38,6 +40,7 @@ export default {
   components: {
     Index,
     Nav,
+    Login
   },
 };
 
@@ -47,6 +50,7 @@ export default {
 <style lang="scss">
     .container{
       min-width: 1200px;
+      width: 100%;
       height: 100%;
       margin: 0 auto
     }
