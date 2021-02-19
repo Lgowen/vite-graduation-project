@@ -1,9 +1,9 @@
 <template>
-   <div class="container">
-      <Nav v-if="isHomePage"></Nav>
-      <!-- <Login></Login> -->
-      <router-view></router-view>
-   </div>
+  <div class="container">
+    <Nav v-if="isHomePage"></Nav>
+    <!-- <Login></Login> -->
+    <router-view class="router-view"></router-view>
+  </div>
 </template>
 
 <script>
@@ -19,20 +19,20 @@ import { useStore, mapState } from "vuex"
 export default {
   name: "App",
   // // 组合API的入口函数
-  setup() {
+  setup () {
     // ref函数只适用于简单数据类型
     // reactive适用于复杂数据类型
     // let {state, deleteStu} = removeStudent()
     // let {state2, addStu} = addStudent(state)
     const store = useStore()
     const ruote = useRoute()
-    const isHomePage = computed( () => store.state.isHomePage )
+    const isHomePage = computed(() => store.state.isHomePage)
     // console.log(store.state.isHomePage)
     // isHomePage = computed( () => store.state.isHomePage )
 
     const changeHomePage = isHomePage => store.commit('changeHomePage', isHomePage)
-    watch(ruote, ( { path } ) => {
-        path === '/' ? changeHomePage(false) : changeHomePage(true)
+    watch(ruote, ({ path }) => {
+      path === '/' ? changeHomePage(false) : changeHomePage(true)
     })
     // console.log(isHomePage)
     return { isHomePage }
@@ -47,11 +47,14 @@ export default {
 // 抽取学生数据和相关业务逻辑
 </script>
 
-<style lang="scss">
-    .container{
-      min-width: 1200px;
-      width: 100%;
-      height: 100%;
-      margin: 0 auto
-    }
+<style lang="scss" scoped>
+.container {
+  min-width: 1200px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  .router-view {
+    padding-top: 62px;
+  }
+}
 </style>

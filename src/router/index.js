@@ -48,6 +48,10 @@ const routes = [
       // { path: "array", component: () => import('markdown/array.md') },
       // { path: "day", component: () => import('markdown/day.md') }
     ]
+  },
+  {
+    path: '/photos',
+    component: () => import('../views/gallery.vue')
   }
 ]
 
