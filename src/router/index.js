@@ -21,6 +21,10 @@ const routes = [
     component: () => import('comps/login/login.vue'), // 路由懒加载
   },
   {
+    path: '/register',
+    component: () => import('comps/register/register.vue'), // 路由懒加载
+  },
+  {
     path: "/archive",
     component: () => import('../views/archive.vue')
   },

@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue";
+import { ref, reactive } from "vue"
 // 控制路由切换显示激活当前item
 export function controlRoute() {
     let activeId = ref('')

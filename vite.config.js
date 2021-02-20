@@ -31,6 +31,17 @@ const config = {
     "utils": path.resolve(__dirname, "src/utils"),
     "apis": path.resolve(__dirname, "src/apis"),
     "views": path.resolve(__dirname, "src/views")
+  },
+  server: {
+    // proxy: { // 本地开发环境通过代理实现跨域，生产环境使用 nginx 转发
+    //   // '/api': 'http://localhost:9527/api',
+    //   '/api': {
+    //     target: 'http://localhost:9527/', // 后端服务实际地址
+    //     changeOrigin: true,
+    //     rewrite: path => path.replace(/^\/api/, '')
+    //   },
+    // },
+    open: true
   }
 }
 

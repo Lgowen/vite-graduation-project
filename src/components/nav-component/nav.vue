@@ -116,25 +116,30 @@
 </template>
 
 <script>
-import { ref, reactive, onMounted, watch } from "vue";
-import { useRoute } from 'vue-router'
+import { ref, reactive, onMounted, watch, defineComponent } from "vue";
+import { useRoute, useRouter } from 'vue-router'
 import { controlRoute } from './controlRoute'
 
-export default {
+export default defineComponent({
   name: "Nav",
   setup() {
-    const ruote = useRoute()
+    const route = useRoute()
+    const router = useRouter()
     const { activeId, navListItem, routeChange } = controlRoute() // 抽离Nav组件业务逻辑
     onMounted( () => {
       
-      routeChange(ruote)
+      routeChange(route)
     })  // 保证从首页进来时展示的是当前的激活项
     
-    watch(ruote, nowPath => routeChange(nowPath)) // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
+    watch(route, nowPath => routeChange(nowPath)) // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
     
-    return { activeId, navListItem, routeChange }
+    function handleClick(path) {
+      router.push(path)
+    }
+
+    return { activeId, navListItem, routeChange, handleClick }
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>
