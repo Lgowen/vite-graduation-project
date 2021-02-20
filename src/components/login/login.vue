@@ -30,11 +30,10 @@ export default defineComponent({
   setup() {
     const { ctx } = getCurrentInstance() // 获取当前组件实例
     const router = useRouter()
-    const { loginForm, loginRules, validateLogin, resetLoginForm} = handleLogin() // 引入登录业务数据逻辑
+    const { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister } = handleLogin() // 引入登录业务数据逻辑
     
     function login() {
       validateLogin(ctx)
-      resetLoginForm(ctx)
     }
 
     function resetForm() {
@@ -42,7 +41,7 @@ export default defineComponent({
     }
 
     function toReg() {
-      router.push('register')
+      linkToRegister(router)
     }
 
     return { loginForm, loginRules, login, resetForm, toReg }
@@ -55,6 +54,6 @@ export default defineComponent({
        margin: 0 auto;
        margin-top: 100px;
        width: 500px;
-       height: 500px
+       height: 500px;
    }
 </style>

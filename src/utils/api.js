@@ -5,11 +5,15 @@ import request from './request'
  * @param {*} query 地址栏参数
  * @returns { datas: [...], total: xxx}
  */
-export async function getNews(query) {
-    const url = `/news?page=${query.page}&limit=${query.limit}`;
-    const resp = await request(url);
-    const result = await resp.json();
-    return result;
+export function getNews(query) {
+    // const url = `/news?page=${query.page}&limit=${query.limit}`;
+    // const resp = await request(url);
+    // const result = await resp.json();
+    // return result
+    return request({
+        method: 'get',
+        url: `/news?page=${query.page}&limit=${query.limit}`
+    })
   }
   
   /**

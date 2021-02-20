@@ -147,43 +147,6 @@ export default defineComponent({
     display: flex;
     justify-content: center;
 }
-// .nav-mobile {
-//   display: flex;
-//   line-height: 60px;
-//   .nav-mobile-logo {
-//     flex: 1;
-//     margin-top: 5px;
-//     margin-left: 10px;
-//   }
-//   .title {
-//     flex: 3;
-//     font-size: 24px;
-//   }
-//   .menu {
-//     flex: 1;
-//     font-size: 34px;
-//     color: #409eff;
-//   }
-// }
-// .nav-mobile-content {
-//   font-size: 0.3rem;
-//   height: 7.3rem;
-//   width: 100%;
-//   background-color: #fff;
-//   .list {
-//     .item {
-//       line-height: 0.8rem;
-//       color: #303133;
-//       border-bottom: 1px solid #eee;
-//       a {
-//         display: block;
-//         width: 100%;
-//         color: #409eff;
-//         text-decoration-line: none;
-//       }
-//     }
-//   }
-// }
 .nav {
   position: fixed;
   top: 0;

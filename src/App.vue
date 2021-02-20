@@ -49,7 +49,7 @@ export default {
 
 <style lang="scss">
     .container{
-      min-width: 1200px;
+      min-width: 1080px;
       width: 100%;
       height: 100%;
       margin: 0 auto
