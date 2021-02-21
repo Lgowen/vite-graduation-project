@@ -1,6 +1,6 @@
 <template>
   <div class="newslist">
-      <div class="news-item-normal" v-for="newsItem in newsList" :key="newsItem.title">
+      <div class="news-item-normal" v-for="newsItem in page.newsList" :key="newsItem.title">
           <div class="words">
               <h2 class="title">
                   <a :href="newsItem.link" target="_blank">{{newsItem.title}}</a>
@@ -12,31 +12,36 @@
               <div class="content">{{newsItem.content}}</div>
           </div>
       </div>
+      <div class="pagination">
+        <el-pagination
+          @size-change="handleSizeChange"
+          @current-change="handleCurrentChange"
+          :current-page="page.query.currentPage"
+          :page-sizes="page.pageSizes"
+          :page-size="page.query.pageSize"
+          layout="total, sizes, prev, pager, next, jumper"
+          :total="page.total">
+        </el-pagination>
+     </div>
   </div>
 </template>
 
 <script>
-// import { handleNews } from './handleNews'
-import { getNews } from 'utils/api'
-import { toRefs, reactive, defineComponent, onMounted } from 'vue'
+import { handleNews } from './handleNews'
+import { defineComponent, onMounted } from 'vue'
+
 export default defineComponent({
   name: 'news',
   setup() {
-    const state = reactive({
-        newsList: []
+    const { page, handleCurrentChange, handleSizeChange, handleGetNews } = handleNews()
+
+    onMounted(async () => {
+        const { datas, total } = await handleGetNews()
+        page.newsList = datas
+        page.total = total
     })
 
-    onMounted( async () => {
-
-        let { data: newsList } = await getNews({page: 1, limit: 10})
-        console.log(newsList)
-        newsList.datas.forEach(news => news.pubDate = new Date(news.pubDate).toLocaleDateString())
-        console.log(newsList.datas)
-        state.newsList = newsList.datas
-
-    })
-    
-    return state
+    return { page, handleCurrentChange, handleSizeChange }
   }
   
   
@@ -71,39 +76,10 @@ export default defineComponent({
        font-size: 16px;
      }
   }
+  .pagination {
+      text-align: center;
+      margin-top: 30px;
+  }
 }
-// .news-item-normal {
-//   border-bottom: 1px solid #ccc;
-//   overflow: hidden;
-//   padding: 20px 0;
-// }
-// .image {
-//   width: 150px;
-//   height: 150px;
-//   border: 1px solid #ccc;
-//   border-radius: 4px;
-//   float: left;
-//   margin-right: 20px;
-// }
-// .image img {
-//   width: 100%;
-//   height: 100%;
-//   object-fit: contain;
-// }
-// .title {
-//   font-size: 1.5em;
-// }
-// .aside {
-//   font-size: 14px;
-//   color: #888;
-// }
-// .aside span {
-//   margin-right: 15px;
-// }
 
-// .content {
-//   max-height: 100px;
-//   overflow: hidden;
-//   line-height: 2;
-// }
 </style>

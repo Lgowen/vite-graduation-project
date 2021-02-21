@@ -18,7 +18,7 @@ export function handleLogin() {
     })
 
     function validateLogin(ctx) {
-        ctx.$refs['loginForm'].validate(async (valid) => {
+        ctx.$refs['logForm'].validate(async (valid) => {
             if (valid) {
             //   console.log(this.ruleForm)
               // alert("submit!")
@@ -39,7 +39,7 @@ export function handleLogin() {
     }
 
     function resetLoginForm(ctx) {
-        ctx.$refs['loginForm'].resetFields()
+        ctx.$refs['logForm'].resetFields()
     }
 
     function linkToRegister(router) {

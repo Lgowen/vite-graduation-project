@@ -25,27 +25,6 @@
             </el-menuItem>
           </el-menu>
         </el-col>
-        <!-- <el-col v-if="userInfo._id"
-                  :span="5">
-            <div class="nav-right">
-              <el-dropdown @command="handleLogout">
-                <span class="el-dropdown-link">
-                  {{userInfo.name}}<i class="el-icon-arrow-down el-icon--right"></i>
-                </span>
-                <img v-if="!userInfo.avatar"
-                     class="user-img"
-                     src="../assets/user.png"
-                     alt="BiaoChenXuYing">
-                <img v-if="userInfo.avatar"
-                     class="user-img"
-                     :src="userInfo.avatar"
-                     alt="BiaoChenXuYing">
-                <el-dropdown-menu slot="dropdown">
-                  <el-dropdown-item command="logout">登 出</el-dropdown-item>
-                </el-dropdown-menu>
-              </el-dropdown>
-            </div>
-          </el-col> -->
         <el-col :span="4">
           <div class="nav-right">
             <el-button size="small" type="primary" @click="handleClick('login')"
@@ -58,65 +37,11 @@
         </el-col>
       </el-row>
     </div>
-    <!-- <canvas id="sakura" />
-    <div class="content">
-      <div class="home-header">
-        <router-link class="link"
-                     to="/home">
-          <img class="home-logo"
-               src="../assets/logo/avartar.png"
-               alt="biaochenxuying logo" />
-        </router-link>
-      </div>
-      <div class="home-body">
-        <div class="list">
-          <router-link class="link"
-                       to="/articles">
-            文章
-          </router-link>
-          <router-link class="link"
-                       to="/project">
-            项目
-          </router-link>
-          <a target="_blank"
-             rel="noopener noreferrer"
-             class="link"
-             href="https://github.com/Lgowen">
-            github
-          </a>
-          <a target="_blank"
-             rel="noopener noreferrer"
-             class="link"
-             href="https://juejin.im/user/591d6b4d0ce463006926ae40">
-            掘金
-          </a>
-          <a target="_blank"
-             rel="noopener noreferrer"
-             class="link"
-             href="https://www.zhihu.com/people/gu-jian-qi-tan-shui/activities">
-            知乎
-          </a>
-          <a target="_blank"
-             rel="noopener noreferrer"
-             class="link"
-             href="https://segmentfault.com/u/biaochenxuying">
-            segmentfault
-          </a>
-          <a target="_blank"
-             rel="noopener noreferrer"
-             class="link"
-             href="https://www.jianshu.com/u/91717b553bfd">
-            简书
-          </a>
-        </div>
-        <div class="introduce"> 时光正好，未来可期，加油 ！ </div>
-      </div>
-    </div> -->
   </div>
 </template>
 
 <script>
-import { ref, reactive, onMounted, watch, defineComponent } from "vue";
+import { onMounted, watch, defineComponent } from "vue";
 import { useRoute, useRouter } from 'vue-router'
 import { controlRoute } from './controlRoute'
 

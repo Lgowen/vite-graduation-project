@@ -38,6 +38,11 @@ export function controlRoute() {
           path: "/about",
           name: "关于",
         },
+        {
+          id: "8",
+          path: "/news",
+          name: "新闻",
+        }
       ])
 
     function routeChange(nowPath) {

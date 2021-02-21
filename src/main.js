@@ -14,7 +14,7 @@ import 'assets/iconfont5/iconfont.css'
 // import 'github-markdown-css'
 // import './assets/css/vue.css'
 // import 'vite-plugin-vuedoc/style.css'
-import { ElButton, ElRow, ElCol, ElMenu, ElMenuItem, ElForm, ElInput, ElFormItem, ElRadioGroup, ElRadio, ElMessage } from 'element-plus'
+import { ElButton, ElRow, ElCol, ElMenu, ElMenuItem, ElForm, ElInput, ElFormItem, ElRadioGroup, ElRadio, ElMessage, ElPagination } from 'element-plus'
 
 
 const vue = createApp(App)
@@ -35,5 +35,6 @@ vue.use(ElButton)
 .use(ElForm).use(ElInput)
 .use(ElFormItem).use(ElRadioGroup)
 .use(ElRadio).use(ElMessage)
+.use(ElPagination)
 vue.use(router).use(store).mount("#app")
 

@@ -3,7 +3,7 @@
     <el-form
       :model="loginForm"
       :rules="loginRules"
-      ref="loginForm"
+      ref="logForm"
       label-width="60px"
       class="loginForm"
     >

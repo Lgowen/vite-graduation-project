@@ -28,3 +28,7 @@ export function getScrollTop (element) {
 
   return element.scrollTop;
 }
+
+export function formatDate (date) {
+  return new Date(date).toLocaleDateString()
+}
