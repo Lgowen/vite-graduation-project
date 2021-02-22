@@ -27,7 +27,7 @@
     <div class='navgation'>
       <i
         v-for='item in navgation'
-        @click='triggerPage(item.path)'
+        @click='handleTrigger(item.path)'
         :key='item.name'
         :class='item.icon'
       >
@@ -41,41 +41,20 @@
   </div>
 </template>
 <script>
-import { ref, reactive, onMounted, onUnmounted, watch } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
-import { useStore } from 'vuex'
-import { loadFn, destroyFn } from '../../utils/utils'
+import { handleCenter } from './handleCenter'
+import { useRouter } from 'vue-router'
 export default {
   name: 'center',
   setup() {
       const router = useRouter()
-      const store = useStore()
-      const navgation = reactive([
-         { name: 'Login', icon: 'iconfont icon-touxiang', path: '/login'},
-        {
-          name: 'Article-List',
-          icon: 'iconfont icon-wenzhang',
-          path: '/article',
-        },
-        { name: 'Demo', icon: 'iconfont icon-anli', path: '/demo'},
-        {
-          name: 'LeaveMessage',
-          icon: 'iconfont icon-liuyan2',
-          path: '/message',
-        },
-        { name: 'Photos', icon: 'iconfont icon-xiangce', path: '/photos'},
-        {
-          name: 'Github',
-          icon: 'iconfont icon-GitHub',
-          path: 'https://github.com/Lgowen',
-        },
-      ])
 
-      const triggerPage = path => {
-        path === 'https://github.com/Lgowen' ? window.open(path) : router.push(path)
+      const { navgation, triggerPage } = handleCenter()
+
+      function handleTrigger(path) {
+          triggerPage(path, router)
       }
 
-      return { navgation, triggerPage }
+      return { navgation, handleTrigger }
   }
 }
 </script>
