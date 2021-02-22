@@ -30,7 +30,8 @@ const config = {
     "styles": path.resolve(__dirname, "src/styles"),
     "utils": path.resolve(__dirname, "src/utils"),
     "apis": path.resolve(__dirname, "src/apis"),
-    "views": path.resolve(__dirname, "src/views")
+    "views": path.resolve(__dirname, "src/views"),
+    "models": path.resolve(__dirname, "src/models")
   },
   server: {
     // proxy: { // 本地开发环境通过代理实现跨域，生产环境使用 nginx 转发

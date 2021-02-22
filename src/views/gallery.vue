@@ -4,55 +4,46 @@
          ref="container">
       <photo-list v-for="(source,index) in sources"
                   :key="index"
-                  :sources="source" />
+                  :photoList="source" />
     </div>
   </div>
 </template>
 
 <script>
-import { reactive, ref } from 'vue'
+import { handlePhotos } from "models/gallery"
 import PhotoList from '../components/PhotoList.vue'
-import { getRandomPic, getScrollTop } from '../utils/utils.js'
-
-const initSources = (cols, initCount) => {
-  const sources = []
-  while (cols--) {
-    let count = initCount
-    const col = []
-    while (count--) col.push(getRandomPic())
-    sources.push(col)
-  }
-  return sources
-}
-
+import { getScrollTop } from '../utils/utils.js'
 
 export default {
   components: {
     PhotoList
   },
   setup () {
-    const sources = reactive({})
+    // const sources = reactive(initSources(3, 10))
+
+    const { sources } = handlePhotos()
+
     window.addEventListener('scroll', evt => {
       const scrollTop = getScrollTop(window)
 
-      console.log(scrollTop);
-      console.log(document.querySelector('.photo-list').clientHeight);
+      // console.log(scrollTop);
+      // console.log(document.querySelector('.photo-list').clientHeight);
     })
 
     return {
-      sources: initSources(3, 10)
+      sources
     }
   },
   unmounted () {
 
   },
   methods: {
-    sources () {
-      const sources = []
-      let count = 10
-      while (count--) sources.push(getRandomPic())
-      return sources
-    }
+    // sources () {
+    //   const sources = []
+    //   let count = 10
+    //   while (count--) sources.push(getRandomPic())
+    //   return sources
+    // }
   }
 }
 </script>

@@ -1,8 +1,8 @@
 <template>
   <div class="photo-list">
-    <Photo v-for="(src,index) in sources"
+    <Photo v-for="(photoInfo,index) in photoList"
            :key="index"
-           :src="src" />
+           :photoInfo="photoInfo" />
   </div>
 </template>
 
@@ -11,13 +11,10 @@ import Photo from './Photo.vue'
 
 export default {
   props: {
-    sources: Array
+    photoList: Array
   },
   components: {
     Photo
-  },
-  setup () {
-
   }
 }
 </script>

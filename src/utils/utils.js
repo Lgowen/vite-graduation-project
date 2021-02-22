@@ -18,7 +18,14 @@ export function getRandomPic () {
   const randomIndex = (num) => Math.floor(num * rans.length)
   const randomLength = (num) => 300 + rans[randomIndex(num)]
   const baseUrl = 'http://placehold.it/'
-  return `${baseUrl}${randomLength(Math.random())}x${randomLength(Math.random())}/${Math.random().toString(16).slice(2, 8)}`
+  const width = randomLength(Math.random())
+  const height = randomLength(Math.random())
+  const random = Math.random().toString(16).slice(2, 8)
+  return {
+    url: `${baseUrl}${width}x${height}/${random}`,
+    width,
+    height
+  }
 }
 
 export function getScrollTop (element) {
