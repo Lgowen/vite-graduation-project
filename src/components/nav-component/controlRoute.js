@@ -25,8 +25,8 @@ export function controlRoute() {
         },
         {
           id: "5",
-          path: "/timeline",
-          name: "历程",
+          path: "/gallery",
+          name: "相册",
         },
         {
           id: "6",
@@ -48,6 +48,7 @@ export function controlRoute() {
     function routeChange(nowPath) {
         for(const item of navListItem){
             if( item.path === nowPath.path ){
+                console.log(nowPath.path)
                 activeId.value = item.id
             }
         }

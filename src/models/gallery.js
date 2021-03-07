@@ -4,7 +4,7 @@ import { getRandomPic } from 'utils/utils.js'
 export function handlePhotos() {
 
     function initSources(cols, initCount){
-        const sources = []
+        const sources = [] 
         while (cols--) {
           let count = initCount
           const col = []

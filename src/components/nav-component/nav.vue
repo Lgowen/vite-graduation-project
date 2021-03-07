@@ -27,10 +27,13 @@
         </el-col>
         <el-col :span="4">
           <div class="nav-right">
-            <el-button size="small" type="primary" @click="handleClick('login')"
+            <el-button size="small" type="primary" v-if="isLogin" @click="handleClick('output')"
+              >退出登录</el-button
+            >
+            <el-button size="small" type="primary" @click="handleClick('/login')"
               >登录</el-button
             >
-            <el-button size="small" type="danger" @click="handleClick('register')"
+            <el-button size="small" type="danger" @click="handleClick('/register')"
               >注册</el-button
             >
           </div>
@@ -41,16 +44,19 @@
 </template>
 
 <script>
-import { onMounted, watch, defineComponent } from "vue";
+import { onMounted, watch, defineComponent, computed } from "vue";
 import { useRoute, useRouter } from 'vue-router'
 import { controlRoute } from './controlRoute'
+import { useStore } from 'vuex'
 
 export default defineComponent({
   name: "Nav",
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const { activeId, navListItem, routeChange } = controlRoute() // 抽离Nav组件业务逻辑
+    const store = useStore()
+    const isLogin = computed(() => store.state.isLogin)
+    let { activeId, navListItem, routeChange } = controlRoute() // 抽离Nav组件业务逻辑
     onMounted( () => {
       
       routeChange(route)
@@ -59,10 +65,12 @@ export default defineComponent({
     watch(route, nowPath => routeChange(nowPath)) // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
     
     function handleClick(path) {
+      console.log(path)
       router.push(path)
+      activeId.value = '0'
     }
 
-    return { activeId, navListItem, routeChange, handleClick }
+    return { isLogin, activeId, navListItem, routeChange, handleClick }
   },
 });
 </script>

@@ -1,5 +1,5 @@
 <template>
-    <!-- <div class="article">
+  <!-- <div class="article">
        <el-col :span="4">
           <div class="nav-right">
             <el-button size="small" type="primary" @click="handleClick('login')"
@@ -11,26 +11,25 @@
           </div>
         </el-col>
     </div> -->
-    <div class="content">
-      <router-view></router-view>
-    </div>
+  <div class="content">
+    <router-view></router-view>
+  </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue"
+import { ref, reactive } from "vue";
 export default {
   name: "about",
-  setup() {
-  },
-  components: {
-      
-  }
+  setup() {},
+  components: {},
 };
 </script>
 
 <style lang="scss" scoped>
-    .content {
-      margin: 61px 100px 0px; 
-      width: 100%;
-    }
+.content {
+  >:first-child {
+    width: 1080px;
+    margin: 0 auto;
+  }
+}
 </style>

@@ -19,7 +19,7 @@ export function handleRegister() {
         ],
         loginPwd: [
             { required: true, message: "请输入密码", trigger: "blur" },
-            { min: 3, max: 10, message: "长度在 3 到 10 个字符", trigger: "blur" }
+            { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
         ],
         name: [
           {required: true, message: "请输入姓名", trigger: "blur" },
@@ -43,7 +43,7 @@ export function handleRegister() {
               if(userInfo.err) return ElMessage.error('用户已存在') // 注册失败
               ElMessage.success('注册成功，即将跳转到登录页面')
               resetRegForm(ctx)
-              setTimeout( () => router.push('login'), 1000)
+              setTimeout( () => router.push('login'), 2000)
                // 保存个人信息
                //   console.log(userInfo)
             } catch (error) {

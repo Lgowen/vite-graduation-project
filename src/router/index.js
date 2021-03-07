@@ -37,8 +37,8 @@ const routes = [
     component: () => import('../views/project.vue')
   },
   {
-    path: "/timeline",
-    component: () => import('../views/timeline.vue')
+    path: "/gallery",
+    component: () => import('../views/gallery.vue')
   },
   {
     path: "/message",

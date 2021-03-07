@@ -19,14 +19,20 @@ import { createStore } from 'vuex'
 
 export default createStore({
     state: {
-        isHomePage: false
+        isHomePage: false,
+        userInfo: null,
+        isLogin: false
     },
     getters: {
-        isHomePage: state => state.isHomePage
+        isHomePage: state => state.isHomePage,
+        isLogin: state => state.isLogin
     },
     mutations: {
         changeHomePage(state, isHomePage){ // 判断是否主页
             state.isHomePage = isHomePage
+        },
+        changeLoginStatus(state, isLogin) {
+            state.isLogin = isLogin
         }
     },
     actions: {

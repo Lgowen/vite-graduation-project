@@ -33,7 +33,7 @@ export default defineComponent({
     const { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister } = handleLogin() // 引入登录业务数据逻辑
     
     function login() {
-      validateLogin(ctx)
+      validateLogin(ctx, router)
     }
 
     function resetForm() {
