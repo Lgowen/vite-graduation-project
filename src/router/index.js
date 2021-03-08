@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { startLoading, endLoading } from 'utils/loading'
 import algorithm from 'markdown/algorithm.md'
 // import array from 'markdown/array.md'
 // import day from 'markdown/day.md'
@@ -67,6 +68,15 @@ const router = createRouter({
   history: createWebHistory(),
   routes
 })
+
+router.beforeEach(() => {
+  startLoading() // 结束 Progress
+})
+
+router.afterEach(() => {
+  endLoading() // 结束 Progress
+})
+
 
 export default router
 
