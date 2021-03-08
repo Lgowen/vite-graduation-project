@@ -1,4 +1,5 @@
 import axios from "axios"
+import { getLocalStorage } from "./storage"
 import { ElMessage, ElMessageBox } from "element-plus"
 
 // 创建axios实例
@@ -10,19 +11,21 @@ const service = axios.create({
   timeout: 500000,
 })
 
-// // 请求拦截
-// service.interceptors.request.use(
-//   (config) => {
-//     // 模拟指定请求令牌
-//     config.headers["X-Token"] = "my token";
-//     return config;
-//   },
-//   (error) => {
-//     // 请求错误的统一处理
-//     console.log(error); // for debug
-//     return Promise.reject(error);
-//   }
-// );
+// 请求拦截
+service.interceptors.request.use(
+  config => {
+    const token = getLocalStorage('token')
+    if(token) {
+      config.headers.Authorization = token
+    }
+    return config
+  },
+  error => {
+    // 请求错误的统一处理
+    console.log(error); // for debug
+    return Promise.reject(error);
+  }
+)
 
 // // 响应拦截器
 // service.interceptors.response.use(

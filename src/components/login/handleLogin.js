@@ -1,6 +1,7 @@
 import { reactive } from "vue"
 import { login } from 'utils/api'
 import { ElMessage } from 'element-plus'
+import { setLocalStorage } from "utils/storage"
 
 export function handleLogin() {
     const loginForm = reactive({
@@ -27,6 +28,7 @@ export function handleLogin() {
                 // console.log(this.ruleForm)
                 const { data } = await login(loginForm)
                 // console.log(this.ruleForm)
+                setLocalStorage('token', data.token) // 保存登录成功后的token
                 console.log(data)
                 if(data.err) {
                   ElMessage.error("账号或密码错误")
