@@ -1,4 +1,7 @@
-import { ref, reactive } from "vue"
+import { ref, reactive, computed } from "vue"
+import { useStore } from "vuex"
+import { removeLocalStorage } from "utils/storage"
+
 // 控制路由切换显示激活当前item
 export function controlRoute() {
     let activeId = ref('')
@@ -45,6 +48,9 @@ export function controlRoute() {
         }
       ])
 
+    const store = useStore()
+    const isLogin = computed(() => store.getters.isLogin)
+
     function routeChange(nowPath) {
         for(const item of navListItem){
             if( item.path === nowPath.path ){
@@ -54,5 +60,11 @@ export function controlRoute() {
         }
     }
 
-    return { activeId, navListItem, routeChange }
+    function quitLogin () {
+      removeLocalStorage('token') // 退出登录清除localStorage
+      store.commit('changeUserInfo', null) // 清除个人信息
+      store.commit('changeLoginStatus', false) // 清除登录状态
+    }
+
+    return { activeId, navListItem, isLogin, quitLogin, routeChange }
 }

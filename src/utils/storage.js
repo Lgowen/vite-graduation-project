@@ -14,6 +14,15 @@
     return window.localStorage.setItem(key, value) 
     } 
 
+      /** 
+    * 移除 localStorage 的值 
+    * @param {string} key localStorage key name 
+    * @param {any} value 值 
+    */ 
+       export const removeLocalStorage = (key) => { 
+        return window.localStorage.removeItem(key) 
+        } 
+
 
     /** 
  * 获取 sessionStorage 的值 

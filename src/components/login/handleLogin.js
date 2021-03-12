@@ -2,6 +2,7 @@ import { reactive } from "vue"
 import { login } from 'utils/api'
 import { ElMessage } from 'element-plus'
 import { setLocalStorage } from "utils/storage"
+import { useStore } from 'vuex'
 
 export function handleLogin() {
     const loginForm = reactive({
@@ -18,6 +19,7 @@ export function handleLogin() {
             { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
         ]
     })
+    const store = useStore()
 
     function validateLogin(ctx, router) {
         ctx.$refs['logForm'].validate(async (valid) => {
@@ -29,6 +31,8 @@ export function handleLogin() {
                 const { data } = await login(loginForm)
                 // console.log(this.ruleForm)
                 setLocalStorage('token', data.token) // 保存登录成功后的token
+                store.commit('changeUserInfo', data) // 保存用户信息到vuex中
+                store.commit('changeLoginStatus', true) // 保持用户登录状态
                 console.log(data)
                 if(data.err) {
                   ElMessage.error("账号或密码错误")

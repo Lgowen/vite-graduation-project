@@ -25,14 +25,19 @@ export default createStore({
     },
     getters: {
         isHomePage: state => state.isHomePage,
-        isLogin: state => state.isLogin
+        isLogin: state => state.isLogin,
+        userInfo: state => state.userInfo
     },
     mutations: {
-        changeHomePage(state, isHomePage){ // 判断是否主页
+        changeHomePage(state, isHomePage){  // 判断是否主页
             state.isHomePage = isHomePage
         },
         changeLoginStatus(state, isLogin) {
             state.isLogin = isLogin
+        },
+        changeUserInfo(state, userInfo) {
+            state.userInfo = userInfo
+            console.log(state.userInfo)
         }
     },
     actions: {

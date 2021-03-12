@@ -17,6 +17,7 @@ service.interceptors.request.use(
   config => {
     startLoading() // 显示进度条
     const token = getLocalStorage('token')
+    console.log(token)
     if(token) {
       config.headers.Authorization = token
     }

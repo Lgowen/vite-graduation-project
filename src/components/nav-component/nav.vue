@@ -27,13 +27,13 @@
         </el-col>
         <el-col :span="4">
           <div class="nav-right">
-            <el-button size="small" type="primary" v-if="isLogin" @click="handleClick('output')"
+            <el-button size="small" type="primary" v-if="isLogin" @click="quitLogin()"
               >退出登录</el-button
             >
-            <el-button size="small" type="primary" @click="handleClick('/login')"
+            <el-button size="small" type="primary" v-if="!isLogin" @click="handleClick('/login')"
               >登录</el-button
             >
-            <el-button size="small" type="danger" @click="handleClick('/register')"
+            <el-button size="small" type="danger" v-if="!isLogin" @click="handleClick('/register')"
               >注册</el-button
             >
           </div>
@@ -44,19 +44,16 @@
 </template>
 
 <script>
-import { onMounted, watch, defineComponent, computed } from "vue";
+import { onMounted, watch, defineComponent } from "vue";
 import { useRoute, useRouter } from 'vue-router'
 import { controlRoute } from './controlRoute'
-import { useStore } from 'vuex'
 
 export default defineComponent({
   name: "Nav",
   setup() {
     const route = useRoute()
     const router = useRouter()
-    const store = useStore()
-    const isLogin = computed(() => store.state.isLogin)
-    let { activeId, navListItem, routeChange } = controlRoute() // 抽离Nav组件业务逻辑
+    let { activeId, navListItem, isLogin, routeChange, quitLogin } = controlRoute() // 抽离Nav组件业务逻辑
     onMounted( () => {
       
       routeChange(route)
@@ -70,7 +67,7 @@ export default defineComponent({
       activeId.value = '0'
     }
 
-    return { isLogin, activeId, navListItem, routeChange, handleClick }
+    return { isLogin, activeId, navListItem, routeChange, handleClick, quitLogin }
   },
 });
 </script>
