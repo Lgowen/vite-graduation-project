@@ -15,7 +15,7 @@ export function handleCenter() {
          icon: 'iconfont icon-liuyan2',
          path: '/message',
        },
-       { name: 'Photos', icon: 'iconfont icon-xiangce', path: '/photos'},
+       { name: 'Photos', icon: 'iconfont icon-xiangce', path: '/gallery'},
        {
          name: 'Github',
          icon: 'iconfont icon-GitHub',

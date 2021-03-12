@@ -43,35 +43,14 @@ export function login(loginInfo) {
     })
   }
   
-  /**
-   * 注销
+/**
+   * 获取md文件
+   * @returns 
    */
-export async function loginOut() {
-    document.cookie = "token=; max-age=-1";
-    location.href = "/login.html";
-  }
-  
-  /**
-   * 获取当前登录的用户信息
-   * 如果当前没有登录的用户，返回null
-   */
-  async function whoAmI() {
-    const resp = await request("/api/user/whoami");
-    const result = await resp.json();
-    if (result.err) {
-      // 之前没有登录
-      return null;
-    }
-    return result;
-  }
-  
-  /**
-   * 进入个人中心页面时运行的函数
-   */
-  async function personal() {
-    // A. 输出在服务器
-    // B. 输出在浏览器
-    // C. 不会输出
-    console.log("123")
-  }
-  
+
+export function getMarkDown() {
+  return request({
+    method: 'get',
+    url: '/articles'
+  })
+}
