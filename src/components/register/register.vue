@@ -44,9 +44,6 @@ import { reg } from 'utils/api'
 import { ElMessage } from 'element-plus'
 import { getCurrentInstance, defineComponent, onMounted, toRefs } from 'vue'
 export default defineComponent({
-   components: {
-     vueImgVerify,
-   },
    setup() {
     const router = useRouter()
     const { ctx, appContext } = getCurrentInstance() // 获取当前组件实例

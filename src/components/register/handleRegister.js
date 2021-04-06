@@ -1,4 +1,4 @@
-import { ref, reactive } from "vue"
+import { reactive } from "vue"
 import { reg } from 'utils/api'
 import { ElMessage } from 'element-plus'
 
@@ -33,8 +33,7 @@ export function handleRegister() {
             { required: true, message: '请选择角色', trigger: 'change' }
         ],
         confirmPwd: [
-            { required: true, message: "请再次输入密码", trigger: "blur" },
-            { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
+            { validator: validatePass2, trigger: "blur" }
         ]
     })
 
@@ -60,6 +59,16 @@ export function handleRegister() {
           }
       })
     }
+
+    function validatePass2(rule, value, callback){
+      if (value === '') {
+        callback(new Error('请再次输入密码'));
+      } else if (value !== regForm.loginPwd) {
+        callback(new Error('两次输入密码不一致!'));
+      } else {
+        callback();
+      }
+    };
 
     function resetRegForm(ctx){
         ctx.$refs['registerForm'].resetFields()
