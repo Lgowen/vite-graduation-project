@@ -4,7 +4,7 @@
       :model="regForm"
       :rules="regRules"
       ref="registerForm"
-      label-width="60px"
+      label-width="80px"
       class="regForm"
     >
       <el-form-item label="账号" prop="loginId">
@@ -12,6 +12,9 @@
       </el-form-item>
       <el-form-item label="密码" prop="loginPwd">
         <el-input v-model="regForm.loginPwd" type="password" show-password></el-input>
+      </el-form-item>
+      <el-form-item label="确认密码" prop="confirmPwd">
+        <el-input v-model="regForm.confirmPwd" type="password" show-password></el-input>
       </el-form-item>
       <el-form-item label="姓名" prop="name">
         <el-input v-model="regForm.name"></el-input>
@@ -39,13 +42,16 @@ import { handleRegister } from './handleRegister'
 import { useRouter } from 'vue-router'
 import { reg } from 'utils/api'
 import { ElMessage } from 'element-plus'
-import { getCurrentInstance, defineComponent, onMounted } from 'vue'
+import { getCurrentInstance, defineComponent, onMounted, toRefs } from 'vue'
 export default defineComponent({
+   components: {
+     vueImgVerify,
+   },
    setup() {
     const router = useRouter()
     const { ctx, appContext } = getCurrentInstance() // 获取当前组件实例
-    let { regForm, regRules, validateReg, resetRegForm } = handleRegister() // 引入登录业务数据逻辑
-    
+    let { regForm, regRules, verifyRef, state, validateReg, resetRegForm } = handleRegister() // 引入登录业务数据逻辑
+
     function register() {
       validateReg(ctx, router)
     }

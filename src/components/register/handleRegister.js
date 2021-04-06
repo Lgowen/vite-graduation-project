@@ -9,7 +9,8 @@ export function handleRegister() {
         loginPwd: "",
         name: "",
         age: "",
-        role: ""
+        role: "",
+        confirmPwd: ""
     })
 
     const regRules = reactive({
@@ -30,6 +31,10 @@ export function handleRegister() {
         ],
         role: [
             { required: true, message: '请选择角色', trigger: 'change' }
+        ],
+        confirmPwd: [
+            { required: true, message: "请再次输入密码", trigger: "blur" },
+            { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
         ]
     })
 

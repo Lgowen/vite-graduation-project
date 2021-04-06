@@ -1,4 +1,4 @@
-import { reactive } from "vue"
+import { ref, reactive } from "vue"
 import { login } from 'utils/api'
 import { ElMessage } from 'element-plus'
 import { setLocalStorage } from "utils/storage"
@@ -7,7 +7,8 @@ import { useStore } from 'vuex'
 export function handleLogin() {
     const loginForm = reactive({
         loginId: "",
-        loginPwd: ""
+        loginPwd: "",
+        identify: ""
     })
     const loginRules = reactive({
         loginId: [
@@ -17,9 +18,15 @@ export function handleLogin() {
         loginPwd: [
             { required: true, message: "请输入密码", trigger: "blur" },
             { min: 6, max: 10, message: "长度在 6 到 10 个字符", trigger: "blur" }
+        ],
+        identify: [
+           { required: true, message: "请输入验证码", trigger: "blur" },
+           { min: 1, max: 4, message: "长度在4个字符", trigger: "blur" }
         ]
     })
     const store = useStore()
+
+    const verifyRef = ref(null);
 
     function validateLogin(ctx, router) {
         ctx.$refs['logForm'].validate(async (valid) => {
@@ -59,5 +66,5 @@ export function handleLogin() {
         router.push('register')
     }
 
-    return { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister }
+    return { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister, verifyRef }
 }

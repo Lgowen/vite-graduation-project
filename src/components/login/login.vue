@@ -4,7 +4,7 @@
       :model="loginForm"
       :rules="loginRules"
       ref="logForm"
-      label-width="60px"
+      label-width="80px"
       class="loginForm"
     >
       <el-form-item label="账号" prop="loginId">
@@ -13,6 +13,10 @@
       <el-form-item label="密码" prop="loginPwd">
         <el-input v-model="loginForm.loginPwd" type="password" show-password></el-input>
       </el-form-item>
+      <el-form-item label="验证码" prop="identify">
+        <el-input v-model="loginForm.identify" style="width: 275px"></el-input>
+      </el-form-item>
+      <vueImgVerify class="identify" ref="verifyRef" />
       <el-form-item>
         <el-button type="primary" @click="login()">登录</el-button>
         <el-button type="primary" @click="toReg()">立即注册</el-button>
@@ -25,15 +29,25 @@
 <script>
 import { handleLogin } from './handleLogin'
 import { useRouter } from 'vue-router'
-import { getCurrentInstance, defineComponent} from 'vue'
+import { getCurrentInstance, defineComponent, toRefs } from 'vue'
+import { ElMessage } from 'element-plus'
+import vueImgVerify from '../indentify.vue'
 export default defineComponent({
+  components: {
+    vueImgVerify,
+  },
   setup() {
     const { ctx } = getCurrentInstance() // 获取当前组件实例
     const router = useRouter()
-    const { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister } = handleLogin() // 引入登录业务数据逻辑
+    const { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister, verifyRef} = handleLogin() // 引入登录业务数据逻辑
     
     function login() {
-      validateLogin(ctx, router)
+      console.log(verifyRef.value.imgCode)
+      if (verifyRef.value.imgCode !== loginForm.identify) {
+        ElMessage.error("验证码输入错误")
+      } else {
+        validateLogin(ctx, router)
+      }
     }
 
     function resetForm() {
@@ -44,7 +58,7 @@ export default defineComponent({
       linkToRegister(router)
     }
 
-    return { loginForm, loginRules, login, resetForm, toReg }
+    return { loginForm, loginRules, login, resetForm, toReg, verifyRef }
   }
 })
 </script>
@@ -55,5 +69,13 @@ export default defineComponent({
        margin-top: 100px;
        width: 500px;
        height: 500px;
+   }
+   .loginForm {
+     position: relative;
+     .identify {
+       position: absolute;
+       right: 0px;
+       bottom: 57px;
+     }
    }
 </style>
