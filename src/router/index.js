@@ -1,5 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import { startLoading, endLoading } from 'utils/loading'
+import store from '../store'
+import { ElMessage } from 'element-plus'
 import algorithm from 'markdown/algorithm.md'
 // import array from 'markdown/array.md'
 // import day from 'markdown/day.md'
@@ -24,6 +26,10 @@ const routes = [
   {
     path: '/register',
     component: () => import('comps/register/register.vue'), // 路由懒加载
+  },
+  {
+    path: '/update',
+    component: () => import('../views/resetPassword.vue')
   },
   {
     path: '/news',
@@ -65,7 +71,17 @@ const router = createRouter({
   routes
 })
 
-router.beforeEach(() => {
+
+router.beforeEach((to, from) => {
+  const { isLogin } = store.state
+  console.log(isLogin)
+  if (to.path === '/message') {
+    console.log(isLogin)
+    if (!isLogin) {
+      ElMessage.error("请先登录")
+      router.push('/login')
+    }
+  }
   startLoading() // 结束 Progress
 })
 

@@ -1,6 +1,7 @@
 import { ref, reactive, computed } from "vue"
 import { useStore } from "vuex"
 import { removeLocalStorage } from "utils/storage"
+import { ElMessage } from 'element-plus'
 
 // 控制路由切换显示激活当前item
 export function controlRoute() {
@@ -60,10 +61,15 @@ export function controlRoute() {
         }
     }
 
-    function quitLogin () {
+    function quitLogin (route, router) {
+      console.log(route)
       removeLocalStorage('token') // 退出登录清除localStorage
       store.commit('changeUserInfo', null) // 清除个人信息
       store.commit('changeLoginStatus', false) // 清除登录状态
+      if (route.path === '/message') {
+        ElMessage.error('留言请先登录')
+        router.push('/login')
+      }
     }
 
     return { activeId, navListItem, isLogin, quitLogin, routeChange }

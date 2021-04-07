@@ -17,12 +17,12 @@ export function getRandomPic () {
   const rans = [-100, -50, 0, 50, 100]
   const randomIndex = (num) => Math.floor(num * rans.length)
   const randomLength = (num) => 300 + rans[randomIndex(num)]
-  const baseUrl = 'http://placehold.it/'
+  const baseUrl = 'https://picsum.photos'
   const width = randomLength(Math.random())
   const height = randomLength(Math.random())
   const random = Math.random().toString(16).slice(2, 8)
   return {
-    url: `${baseUrl}${width}x${height}/${random}`,
+    url: `${baseUrl}/${width}/${height}`,
     width,
     height
   }

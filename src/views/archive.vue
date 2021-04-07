@@ -1,9 +1,11 @@
 <template>
-    
+    <div class="markdown">
+        
+    </div>
 </template>
 
 <script>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted } from "vue";
 export default {
   name: "archive",
   setup() {

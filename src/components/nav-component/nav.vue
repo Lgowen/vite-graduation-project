@@ -7,7 +7,7 @@
             <img class="logo" src="../../assets/logo/avartar.png" alt="lgowen" />
           </router-link>
         </el-col>
-        <el-col :span="16">
+        <el-col :span="15">
           <el-menu
             :router="true"
             :default-active="activeId"
@@ -25,9 +25,9 @@
             </el-menuItem>
           </el-menu>
         </el-col>
-        <el-col :span="4">
+        <el-col :span="5">
           <div class="nav-right">
-            <el-button size="small" type="primary" v-if="isLogin" @click="quitLogin()"
+            <el-button size="small" type="primary" v-if="isLogin" @click="fail()"
               >退出登录</el-button
             >
             <el-button size="small" type="primary" v-if="!isLogin" @click="handleClick('/login')"
@@ -35,6 +35,9 @@
             >
             <el-button size="small" type="danger" v-if="!isLogin" @click="handleClick('/register')"
               >注册</el-button
+            >
+            <el-button size="small" type="warning" @click="handleClick('/update')"
+              >忘记密码</el-button
             >
           </div>
         </el-col>
@@ -67,7 +70,11 @@ export default defineComponent({
       activeId.value = '0'
     }
 
-    return { isLogin, activeId, navListItem, routeChange, handleClick, quitLogin }
+    function fail() {
+      quitLogin(route, router)
+    }
+
+    return { isLogin, activeId, navListItem, routeChange, handleClick, fail }
   },
 });
 </script>

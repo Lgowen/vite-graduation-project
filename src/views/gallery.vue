@@ -1,51 +1,53 @@
 <template>
   <div>
-    <div class="container"
-         ref="container">
-      <photo-list v-for="(source,index) in sources"
-                  :key="index"
-                  :photoList="source" />
+    <div class="container" ref="container">
+      <photo-list v-for="(source, index) in sources" :key="index" :photoList="source" />
     </div>
   </div>
 </template>
 
 <script>
-import { handlePhotos } from "models/gallery"
-import PhotoList from '../components/PhotoList.vue'
-import { getScrollTop } from '../utils/utils.js'
+import { handlePhotos } from "models/gallery";
+import PhotoList from "../components/PhotoList.vue";
+import { getScrollTop } from "../utils/utils.js";
 
 export default {
   components: {
-    PhotoList
+    PhotoList,
   },
-  setup () {
+  setup() {
     // const sources = reactive(initSources(3, 10))
 
-    const { sources } = handlePhotos()
+    const { sources } = handlePhotos();
 
-    window.addEventListener('scroll', evt => {
-      const scrollTop = getScrollTop(window)
+    window.addEventListener("scroll", (evt) => {
+      const scrollTop = getScrollTop(window);
 
       // console.log(scrollTop);
       // console.log(document.querySelector('.photo-list').clientHeight);
-    })
+    });
 
     return {
-      sources
-    }
+      sources,
+    };
   },
-  unmounted () {
-
+  unmounted() {},
+  data() {
+    return {
+      dialogImageUrl: "",
+      dialogVisible: false,
+    };
   },
   methods: {
-    // sources () {
-    //   const sources = []
-    //   let count = 10
-    //   while (count--) sources.push(getRandomPic())
-    //   return sources
-    // }
-  }
-}
+    handleRemove(file, fileList) {
+      console.log(file, fileList);
+    },
+    handlePictureCardPreview(file) {
+      this.dialogImageUrl = file.url;
+      this.dialogVisible = true;
+    },
+  },
+};
 </script>
 
 <style lang="scss" scoped>

@@ -54,3 +54,27 @@ export function getMarkDown() {
     url: '/articles'
   })
 }
+
+export function getComments () {
+  return request({
+    method: 'get',
+    url: '/comment'
+  })
+}
+
+
+export function addComment(comment) {
+  return request({
+    method: 'post',
+    url: '/comment/addComment',
+    data: comment
+  })
+}
+
+export function updatePwd (userInfo) {
+  return request({
+    method: 'post',
+    url: '/user/update',
+    data: userInfo
+  })
+}
