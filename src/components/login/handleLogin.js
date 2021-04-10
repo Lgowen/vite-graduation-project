@@ -37,13 +37,13 @@ export function handleLogin() {
                 // console.log(this.ruleForm)
                 const { data } = await login(loginForm)
                 // console.log(this.ruleForm)
-                setLocalStorage('token', data.token) // 保存登录成功后的token
-                store.commit('changeUserInfo', data) // 保存用户信息到vuex中
-                store.commit('changeLoginStatus', true) // 保持用户登录状态
                 console.log(data)
                 if(data.err) {
                   ElMessage.error("账号或密码错误")
                 }else {
+                  setLocalStorage('token', data.token) // 保存登录成功后的token
+                  store.commit('changeUserInfo', data) // 保存用户信息到vuex中
+                  store.commit('changeLoginStatus', true) // 保持用户登录状态
                   ElMessage.success("即将跳转到文章列表")
                   resetLoginForm(ctx)
                   setTimeout( () => router.push('/article/algorithm'), 2000)

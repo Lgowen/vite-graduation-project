@@ -7,7 +7,7 @@
             <img class="logo" src="../../assets/logo/avartar.png" alt="lgowen" />
           </router-link>
         </el-col>
-        <el-col :span="15">
+        <el-col :span="10">
           <el-menu
             :router="true"
             :default-active="activeId"
@@ -26,14 +26,25 @@
           </el-menu>
         </el-col>
         <el-col :span="5">
+          <Music />
+        </el-col>
+        <el-col :span="5">
           <div class="nav-right">
             <el-button size="small" type="primary" v-if="isLogin" @click="fail()"
               >退出登录</el-button
             >
-            <el-button size="small" type="primary" v-if="!isLogin" @click="handleClick('/login')"
+            <el-button
+              size="small"
+              type="primary"
+              v-if="!isLogin"
+              @click="handleClick('/login')"
               >登录</el-button
             >
-            <el-button size="small" type="danger" v-if="!isLogin" @click="handleClick('/register')"
+            <el-button
+              size="small"
+              type="danger"
+              v-if="!isLogin"
+              @click="handleClick('/register')"
               >注册</el-button
             >
             <el-button size="small" type="warning" @click="handleClick('/update')"
@@ -48,41 +59,45 @@
 
 <script>
 import { onMounted, watch, defineComponent } from "vue";
-import { useRoute, useRouter } from 'vue-router'
-import { controlRoute } from './controlRoute'
+import { useRoute, useRouter } from "vue-router";
+import { controlRoute } from "./controlRoute";
+import Music from "views/music.vue";
 
 export default defineComponent({
   name: "Nav",
   setup() {
-    const route = useRoute()
-    const router = useRouter()
-    let { activeId, navListItem, isLogin, routeChange, quitLogin } = controlRoute() // 抽离Nav组件业务逻辑
-    onMounted( () => {
-      
-      routeChange(route)
-    })  // 保证从首页进来时展示的是当前的激活项
-    
-    watch(route, nowPath => routeChange(nowPath)) // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
-    
+    const route = useRoute();
+    const router = useRouter();
+    let { activeId, navListItem, isLogin, routeChange, quitLogin } = controlRoute(); // 抽离Nav组件业务逻辑
+    onMounted(() => {
+      console.log(isLogin);
+      routeChange(route);
+    }); // 保证从首页进来时展示的是当前的激活项
+
+    watch(route, (nowPath) => routeChange(nowPath)); // 保证路由变化时能够显示当前激活项(包括浏览器的前进、后退)
+
     function handleClick(path) {
-      console.log(path)
-      router.push(path)
-      activeId.value = '0'
+      console.log(path);
+      router.push(path);
+      activeId.value = "0";
     }
 
     function fail() {
-      quitLogin(route, router)
+      quitLogin(route, router);
     }
 
-    return { isLogin, activeId, navListItem, routeChange, handleClick, fail }
+    return { isLogin, activeId, navListItem, routeChange, handleClick, fail };
+  },
+  components: {
+    Music,
   },
 });
 </script>
 
 <style lang="scss" scoped>
 @mixin flex-center {
-    display: flex;
-    justify-content: center;
+  display: flex;
+  justify-content: center;
 }
 .nav {
   position: fixed;

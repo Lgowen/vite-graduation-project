@@ -8,39 +8,46 @@
 
 <script>
 import Nav from "./components/nav-component/nav.vue";
-import Login from "./components/login/login.vue"
-import Index from "./views/index.vue"
-import { ref, reactive, computed, watch } from "vue"
-import { useRoute, useRouter } from 'vue-router'
-import { useStore, mapState } from "vuex"
+import Login from "./components/login/login.vue";
+import Index from "./views/index.vue";
+import { ref, reactive, computed, watch } from "vue";
+import { useRoute, useRouter } from "vue-router";
+import { useStore, mapState } from "vuex";
+import { getLocalStorage } from "utils/storage";
 // import removeStudent from '../src/student/removeStu'
 // import addStudent from '../src/student/addStu'
 
 export default {
   name: "App",
   // // 组合API的入口函数
-  setup () {
+  setup() {
     // ref函数只适用于简单数据类型
     // reactive适用于复杂数据类型
     // let {state, deleteStu} = removeStudent()
     // let {state2, addStu} = addStudent(state)
-    const store = useStore()
-    const ruote = useRoute()
-    const isHomePage = computed(() => store.state.isHomePage)
+    const store = useStore();
+    const ruote = useRoute();
+    const isHomePage = computed(() => store.state.isHomePage);
+    let isLogin = ref(getLocalStorage("token"));
+    console.log(isLogin.value);
+    if (isLogin.value) {
+      store.commit("changeLoginStatus", true);
+    }
+    // let isLogin = computed(() => st;
     // console.log(store.state.isHomePage)
     // isHomePage = computed( () => store.state.isHomePage )
 
-    const changeHomePage = isHomePage => store.commit('changeHomePage', isHomePage)
+    const changeHomePage = (isHomePage) => store.commit("changeHomePage", isHomePage);
     watch(ruote, ({ path }) => {
-      path === '/' ? changeHomePage(false) : changeHomePage(true)
-    })
+      path === "/" ? changeHomePage(false) : changeHomePage(true);
+    });
     // console.log(isHomePage)
-    return { isHomePage }
+    return { isHomePage };
   },
   components: {
     Index,
     Nav,
-    Login
+    Login,
   },
 };
 

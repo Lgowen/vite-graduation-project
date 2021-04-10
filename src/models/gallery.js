@@ -16,7 +16,7 @@ export function handlePhotos() {
 
 
 
-    const sources = reactive(initSources(3, 10))
+    // const sources = reactive(initSources(3, 10))
 
-    return { sources }
+    return { initSources }
 }

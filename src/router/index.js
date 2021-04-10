@@ -32,6 +32,10 @@ const routes = [
     component: () => import('../views/resetPassword.vue')
   },
   {
+    path: '/music',
+    component: () => import('../views/music.vue')
+  },
+  {
     path: '/news',
     component: () => import('comps/news/news.vue'), // 路由懒加载
   },

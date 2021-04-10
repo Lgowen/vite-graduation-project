@@ -27,55 +27,63 @@
 </template>
 
 <script>
-import { handleLogin } from './handleLogin'
-import { useRouter } from 'vue-router'
-import { getCurrentInstance, defineComponent, toRefs } from 'vue'
-import { ElMessage } from 'element-plus'
-import vueImgVerify from '../indentify.vue'
+import { handleLogin } from "./handleLogin";
+import { useRouter } from "vue-router";
+import { getCurrentInstance, defineComponent, toRefs } from "vue";
+import { ElMessage } from "element-plus";
+import vueImgVerify from "../indentify.vue";
 export default defineComponent({
   components: {
     vueImgVerify,
   },
   setup() {
-    const { ctx } = getCurrentInstance() // 获取当前组件实例
-    const router = useRouter()
-    const { loginForm, loginRules, validateLogin, resetLoginForm, linkToRegister, verifyRef} = handleLogin() // 引入登录业务数据逻辑
-    
+    const { ctx } = getCurrentInstance(); // 获取当前组件实例
+    const router = useRouter();
+    const {
+      loginForm,
+      loginRules,
+      validateLogin,
+      resetLoginForm,
+      linkToRegister,
+      verifyRef,
+    } = handleLogin(); // 引入登录业务数据逻辑
+
     function login() {
-      console.log(verifyRef.value.imgCode)
-      if (verifyRef.value.imgCode !== loginForm.identify) {
-        ElMessage.error("验证码输入错误")
+      console.log(verifyRef.value.imgCode);
+      console.log(loginForm.identify);
+      if (verifyRef.value.imgCode.toLowerCase() === loginForm.identify.toLowerCase()) {
+        validateLogin(ctx, router);
       } else {
-        validateLogin(ctx, router)
+        ElMessage.error("验证码输入错误");
       }
     }
 
     function resetForm() {
-      resetLoginForm(ctx)
+      resetLoginForm(ctx);
     }
 
     function toReg() {
-      linkToRegister(router)
+      linkToRegister(router);
     }
 
-    return { loginForm, loginRules, login, resetForm, toReg, verifyRef }
-  }
-})
+    return { loginForm, loginRules, login, resetForm, toReg, verifyRef };
+  },
+});
 </script>
 
 <style lang="scss">
-   .login{
-       margin: 0 auto;
-       margin-top: 100px;
-       width: 500px;
-       height: 500px;
-   }
-   .loginForm {
-     position: relative;
-     .identify {
-       position: absolute;
-       right: 0px;
-       bottom: 57px;
-     }
-   }
+.login {
+  margin: 0 auto;
+  margin-top: 100px;
+  width: 500px;
+  height: 500px;
+}
+.loginForm {
+  position: relative;
+  .identify {
+    position: absolute;
+    right: 0px;
+    bottom: 57px;
+  }
+}
 </style>
