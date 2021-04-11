@@ -19,8 +19,8 @@ export function controlRoute() {
         },
         {
           id: "3",
-          path: "/archive",
-          name: "归档",
+          path: "/code",
+          name: "在线代码",
         },
         {
           id: "4",

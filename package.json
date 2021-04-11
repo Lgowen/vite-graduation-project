@@ -8,14 +8,17 @@
   },
   "dependencies": {
     "axios": "^0.21.1",
+    "codemirror": "^5.60.0",
     "element-plus": "^1.0.2-beta.31",
     "github-markdown-css": "^4.0.0",
     "marked": "^1.2.9",
     "mockjs": "^1.1.0",
     "node-sass": "^5.0.0",
     "nprogress": "^0.2.0",
+    "stylus": "^0.54.8",
     "vite-plugin-vuedoc": "^3.1.1",
     "vue": "^3.0.5",
+    "vue-codemirror": "^4.0.6",
     "vue-router": "^4.0.3",
     "vuex": "^4.0.0"
   },

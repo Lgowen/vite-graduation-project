@@ -9,9 +9,9 @@ import algorithm from 'markdown/algorithm.md'
 
 
 // 1. 定义路由组件， 注意，这里一定要使用 文件的全名（包含文件后缀名）
-// import { h } from 'vue'
-// import Markdown from 'comps/MarkDown.vue'
-// const md = (string) => h(Markdown, { content: string, key: string })
+import { h } from 'vue'
+import Markdown from 'comps/MarkDown.vue'
+const md = (string) => h(Markdown, { content: string, key: string })
 
 
 const routes = [
@@ -60,10 +60,18 @@ const routes = [
     component: () => import('../views/about.vue')
   },
   {
+    path: "/code",
+    component: () => import('../views/code.vue')
+  },
+  {
+    path: "/demo",
+    component: () => import('../views/demo.vue')
+  },
+  {
     path: "/article",
     component: () => import('../views/article.vue'),
     children: [
-      { path: "algorithm", component: () => import('markdown/algorithm.md') }
+      { path: "algorithm", component: () => md(import('markdown/algorithm.md')) }
       // { path: "array", component: () => import('markdown/array.md') },
       // { path: "day", component: () => import('markdown/day.md') }
     ]

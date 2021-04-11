@@ -78,3 +78,14 @@ export function updatePwd (userInfo) {
     data: userInfo
   })
 }
+
+export function uploadFile (file) {
+  return request ({
+    method: 'post',
+    url: '/img',
+    data: file,
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  })
+}
